@@ -1,21 +1,24 @@
-# Walkthrough Onboarding Flow in Flutter
+# Flutter UI Concept
 
-Start the development of your new Flutter app with a beautiful walkthrough flow. Get a head start, save a few hours of work and don't reinvent the wheel. Use this open-source Flutter starter kit to move fast.
+Made by Maadhav Sharma
+- [Subscribe to Code Decoders Youtube](http://bit.ly/CodeDecoders)
+- [Follow me on Instagram](https://instagram.com/maadhav_sharma)
+- [Follow me on Twitter](https://twitter.com/maadhav_sharma)
+- [My Website](decoders.code.blog)
+## ScreenShots
 
-# Instaflutter Walkthrough
 
-<a href="https://www.instaflutter.com/"><img src="https://www.instaflutter.com/wp-content/uploads/2019/01/IMG_0564-473x1024.png" alt="flutter onboarding walkthrough flow" width="200" height="434" /></a>
-<a href="https://www.instaflutter.com/"><img src="https://www.instaflutter.com/wp-content/uploads/2019/01/IMG_0565-473x1024.png" alt="flutter firebase auth" width="200" height="434" /></a>
-<a href="https://www.instaflutter.com/"><img src="https://www.instaflutter.com/wp-content/uploads/2019/01/IMG_0566-473x1024.png" alt="flutter facebook login" width="200" height="434"/></a>
-<a href="https://www.instaflutter.com/"><img src="https://www.instaflutter.com/wp-content/uploads/2019/01/IMG_0567-473x1024.png" alt="flutter starter kit" width="200" height="434" /></a>
+![ScreenShot](https://raw.githubusercontent.com/Maadhav/flutter-login-ui-concept/master/ScreenShots/preview.jpg)
 
-# Powerful features
+- [Design Source Credit:](https://www.uplabs.com/hoangpts)
+## 
+This project is a starting point for a Flutter application.
 
-* Beautiful user experience
-* Unlimited number of walkthrough screens
-* Gorgeous app design
-* Persistent Walkthrough completion
-* Optimized for both iOS and Android
-* Clean, extensible Flutter code
+A few resources to get you started if this is your first Flutter project:
 
-Coded with ❤️ by <a href="https://www.instaflutter.com">Instaflutter</a>.
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
