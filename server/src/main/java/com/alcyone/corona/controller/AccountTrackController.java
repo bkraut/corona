@@ -25,7 +25,7 @@ class AccountTrackController {
 		return service.getAll(accountId);
 	}
 	
-	@PostMapping("/{accountId}/tracks/save")
+	@PostMapping("/{accountId}/tracks")
 	public void save(AccountTrack track) {
 		service.save(track);
 	}
