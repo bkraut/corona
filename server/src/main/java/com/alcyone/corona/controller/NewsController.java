@@ -22,9 +22,14 @@ class NewsController {
 	@Autowired
 	private NewsService service;
 	
-	@GetMapping("/list")
+	@GetMapping
 	public List<News> getAll() {
 		return service.getAll();
+	}
+	
+	@GetMapping("/{uuid}")
+	public News getById(String uuid) {
+		return service.getNews(uuid);
 	}
 	
 	@GetMapping("/last")

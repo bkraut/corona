@@ -11,7 +11,7 @@ import com.alcyone.corona.model.News;
 @Repository
 public interface NewsRepository extends JpaRepository<News, String> {
 	
-	@Query("SELECT u FROM News u order by o.creationDate DESC limit 20")
+	@Query("SELECT u FROM News u order by u.creationDate DESC")
 	public List<News> getLast();
 	
 }
