@@ -117,11 +117,13 @@ class NewsShare extends StatelessWidget {
               icon: Icon(Icons.share), //`Icon` to display
               label: Text('Deli'), //`Text` to display
               onPressed: () {
-                final RenderBox box = context.findRenderObject();
-                Share.share(news.url,
-                    sharePositionOrigin:
-                    box.localToGlobal(Offset.zero) &
-                    box.size);
+                if (news.url != null) {
+                  final RenderBox box = context.findRenderObject();
+                  Share.share(news.url,
+                      sharePositionOrigin:
+                      box.localToGlobal(Offset.zero) &
+                      box.size);
+                }
               }),
           FlatButton.icon(
               color: Colors.amber,
