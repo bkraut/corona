@@ -20,7 +20,7 @@ class Main extends StatelessWidget {
             color: Colors.transparent,
           ),
           child: Padding(
-            padding: EdgeInsets.all(23),
+            padding: EdgeInsets.all(10),
             child: ListView(
               children: <Widget>[
                 SizedBox(height: 200,),

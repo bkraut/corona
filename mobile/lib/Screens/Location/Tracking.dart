@@ -9,7 +9,7 @@ import 'src/listen_location.dart';
 import 'src/permission_status.dart';
 import 'src/service_enabled.dart';
 
-import '../widgets/boom.dart';
+import 'package:corona/Widgets/boom.dart';
 
 class Tracking extends StatelessWidget {
   static const String route = '/';

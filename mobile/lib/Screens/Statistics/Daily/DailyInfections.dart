@@ -1,34 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:charts_flutter/flutter.dart' as charts;
 
-
-class StackedAreaCustomColorLineChart extends StatelessWidget {
+class DailyInfections extends StatelessWidget {
   final List<charts.Series> seriesList;
-  final bool animate;
+  DailyInfections(this.seriesList);
 
-  StackedAreaCustomColorLineChart(this.seriesList, {this.animate});
-
-  /// Creates a [LineChart] with sample data and no transition.
-  factory StackedAreaCustomColorLineChart.withSampleData() {
-    return new StackedAreaCustomColorLineChart(
-      _createSampleData(),
-      // Disable animations for image tests.
-      animate: false,
+  factory DailyInfections.withSampleData() {
+    return new DailyInfections(
+      createSampleData()
     );
   }
 
-
-  @override
   Widget build(BuildContext context) {
-    return new charts.LineChart(seriesList,
+    var axis = charts.NumericAxisSpec(
+        renderSpec: charts.GridlineRendererSpec(
+            labelStyle: charts.TextStyleSpec(
+                fontSize: 10, color: charts.MaterialPalette.white),
+            lineStyle: charts.LineStyleSpec(
+                thickness: 0,
+                color: charts.MaterialPalette.gray.shadeDefault)));
+    return new charts.LineChart(this.seriesList,
+        primaryMeasureAxis: axis,
+        domainAxis: axis,
         defaultRenderer:
         new charts.LineRendererConfig(includeArea: true, stacked: true),
-        animate: animate);
+        animate: true);
+
+    /*return FutureBuilder<List<NewsModel>>(
+        future: fetchNews(http.Client()),
+    builder: (context, snapshot) {
+    if (snapshot.hasError) print(snapshot.error);
+    return snapshot.hasData
+    ? NewsList(news: snapshot.data)
+        : Center(child: CircularProgressIndicator());
+    });*/
   }
 
+
   /// Create one series with sample hard coded data.
-  static List<charts.Series<LinearSales, int>> _createSampleData() {
+  static List<charts.Series<LinearSales, int>> createSampleData() {
     final myFakeDesktopData = [
       new LinearSales(0, 5),
       new LinearSales(1, 25),
@@ -85,6 +96,7 @@ class StackedAreaCustomColorLineChart extends StatelessWidget {
       ),
     ];
   }
+
 }
 
 /// Sample linear data type.
@@ -93,4 +105,20 @@ class LinearSales {
   final int sales;
 
   LinearSales(this.year, this.sales);
+}
+
+
+class StatOld extends StatelessWidget {
+  final List<charts.Series> seriesList;
+
+  StatOld(this.seriesList);
+
+  @override
+  Widget build(BuildContext context) {
+    return new charts.LineChart(this.seriesList,
+        defaultRenderer:
+        new charts.LineRendererConfig(includeArea: true, stacked: true),
+        animate: true);
+  }
+
 }

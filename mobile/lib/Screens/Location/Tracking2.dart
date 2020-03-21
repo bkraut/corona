@@ -3,14 +3,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:loginui/widgets/boom.dart';
+import 'package:corona/Widgets/boom.dart';
 
 import 'src/get_location.dart';
 import 'src/listen_location.dart';
 import 'src/permission_status.dart';
 import 'src/service_enabled.dart';
 
-import '../widgets/boom.dart';
+import 'package:corona/Widgets/boom.dart';
 
 class Tracking2 extends StatelessWidget {
   @override

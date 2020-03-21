@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../News/NewsListPage.dart';
 
 class SignIn extends StatelessWidget {
   @override
@@ -67,7 +68,9 @@ class SignIn extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 60),
                   child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.of(context).push(_createRoute());
+                    },
                     child: Text('Registriraj',
                     style: TextStyle(
                       fontSize: 15,
@@ -92,4 +95,13 @@ class SignIn extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => NewsListPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return child;
+    },
+  );
 }
