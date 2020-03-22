@@ -94,28 +94,14 @@ class NewsListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(
-        image: AssetImage('Assets/image2.png'),
-        fit: BoxFit.cover,
-      )),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          backgroundColor: Color.fromRGBO(80, 80, 80, 0.8),
-        ),
-        backgroundColor: Colors.transparent,
-        body: FutureBuilder<List<News>>(
-          future: fetchNewsList(http.Client()),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) print(snapshot.error);
-            return snapshot.hasData
-                ? NewsList(news: snapshot.data)
-                : Center(child: CircularProgressIndicator());
-          },
-        ),
-      ),
+    return FutureBuilder<List<News>>(
+      future: fetchNewsList(http.Client()),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) print(snapshot.error);
+        return snapshot.hasData
+            ? NewsList(news: snapshot.data)
+            : Center(child: CircularProgressIndicator());
+      },
     );
   }
 }
