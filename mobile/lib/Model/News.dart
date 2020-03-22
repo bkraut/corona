@@ -1,5 +1,8 @@
+import 'package:intl/intl.dart';
+
 class News {
   final String uuid;
+  final DateTime date;
   final String title;
   final String subtitle;
   final String content;
@@ -7,11 +10,13 @@ class News {
   final String thumbnailUrl;
   final String url;
 
-  News({this.uuid, this.title, this.subtitle, this.content, this.author, this.thumbnailUrl, this.url});
+  News({this.uuid, this.date, this.title, this.subtitle, this.content, this.author, this.thumbnailUrl, this.url});
 
   factory News.fromJson(Map<String, dynamic> json) {
+    DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
     return News(
       uuid: json['uuid'] as String,
+      date: dateFormat.parse(json['date']),
       title: json['title'] as String,
       subtitle: json['subtitle'] as String,
       content: json['content'] as String,

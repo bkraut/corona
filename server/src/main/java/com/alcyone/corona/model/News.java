@@ -25,6 +25,10 @@ public class News {
 	private String uuid;
 	
 	@NonNull
+	@Column(name = "date", nullable=false)
+	private Date date;
+	
+	@NonNull
 	@Column(name = "title", columnDefinition = "TEXT", nullable=false)
 	private String title;
 	
@@ -35,6 +39,18 @@ public class News {
 	@NonNull
 	@Column(name = "content", columnDefinition = "TEXT", nullable=false)
 	private String content;
+	
+	@NonNull
+	@Column(name = "author", columnDefinition = "VARCHAR(200)")
+	private String author;
+	
+	@NonNull
+	@Column(name = "url", columnDefinition = "TEXT")
+	private String url;
+	
+	@NonNull
+	@Column(name = "thumbnailUrl", columnDefinition = "TEXT")
+	private String thumbnailUrl;
 	
 	@NonNull
 	@Column(name = "update_date", nullable=false)
@@ -90,6 +106,38 @@ public class News {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getThumbnailUrl() {
+		return thumbnailUrl;
+	}
+
+	public void setThumbnailUrl(String thumbnailUrl) {
+		this.thumbnailUrl = thumbnailUrl;
 	}
 	
 }

@@ -1,6 +1,8 @@
+import 'package:corona/Screens/Location/Widgets/Main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:location/location.dart';
 
 import 'Map/CurrentLocationMap.dart';
 
@@ -60,6 +62,7 @@ class SwitchWidgetClass extends State {
 }
 
 class Main extends StatelessWidget {
+
   bool isSwitched = true;
 
   @override
@@ -75,7 +78,8 @@ class Main extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             SizedBox(height: 350, child: CurrentLocationMap()),
-            SwitchWidget()
+            SwitchWidget(),
+            MyHomePage(title: "Location")
           ],
         ),
       ),

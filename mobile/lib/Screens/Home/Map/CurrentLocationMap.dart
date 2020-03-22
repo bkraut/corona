@@ -1,3 +1,5 @@
+import 'package:corona/globals.dart' as globals;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
@@ -7,7 +9,7 @@ class CurrentLocationMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return new FlutterMap(
       options: new MapOptions(
-        center: new LatLng(51.5, -0.09),
+        center: new LatLng(globals.currentLocation.latitude, globals.currentLocation.longitude),
         zoom: 13.0,
       ),
       layers: [
@@ -20,10 +22,10 @@ class CurrentLocationMap extends StatelessWidget {
             new Marker(
               width: 80.0,
               height: 80.0,
-              point: new LatLng(51.5, -0.09),
+              point: new LatLng(globals.currentLocation.latitude, globals.currentLocation.longitude),
               builder: (ctx) =>
               new Container(
-                child: new FlutterLogo(),
+                child: Icon(Icons.gps_fixed),
               ),
             ),
           ],

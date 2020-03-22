@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:convert' show utf8;
 
 import 'package:corona/Model/News.dart';
 import 'package:corona/Screens/News/NewsDetailPage.dart';
@@ -13,7 +14,12 @@ Future<List<News>> fetchNewsList(http.Client client) async {
   developer.log("Loading News");
   final response = await client.get('https://corona.hashmine.eu/api/news');
   developer.log("Loaded ...");
-  return compute(parseNewsList, response.body);
+  return compute(parseNewsList, utf8.decode(response.bodyBytes));
+}
+
+String utf8convert(String text) {
+  List<int> bytes = text.toString().codeUnits;
+  return utf8.decode(bytes);
 }
 
 List<News> parseNewsList(String responseBody) {
@@ -29,10 +35,10 @@ class NewsThumbnail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (news.thumbnailUrl != null)
-      return Image(image: NetworkImage(news.thumbnailUrl));
+      return Image(image: NetworkImage(news.thumbnailUrl), width: 100,);
     return Image(
         image: NetworkImage(
-            "https://media.npr.org/assets/img/2020/03/11/c_virus_outbreak_sq-428f510423dae3e930089eb9efa735f4c6b8d9f3-s100-c85.jpg"));
+            "https://media.npr.org/assets/img/2020/03/11/c_virus_outbreak_sq-428f510423dae3e930089eb9efa735f4c6b8d9f3-s100-c85.jpg"), width: 100);
   }
 }
 

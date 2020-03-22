@@ -23,7 +23,7 @@ class _PermissionStatusState extends State<PermissionStatusWidget> {
   _requestPermission() async {
     if (_permissionGranted != PermissionStatus.GRANTED) {
       PermissionStatus permissionRequestedResult =
-          await location.requestPermission();
+      await location.requestPermission();
       setState(() {
         _permissionGranted = permissionRequestedResult;
       });

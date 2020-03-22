@@ -1,5 +1,6 @@
-import 'dart:async';
+import 'package:corona/globals.dart' as globals;
 
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -26,7 +27,9 @@ class _ListenLocationState extends State<ListenLocationWidget> {
     }).listen((LocationData currentLocation) {
       setState(() {
         _error = null;
+
         _location = currentLocation;
+        globals.currentLocation = currentLocation;
       });
     });
   }

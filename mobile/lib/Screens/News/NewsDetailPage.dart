@@ -8,6 +8,8 @@ import 'package:http/http.dart' as http;
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'package:intl/intl.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:developer' as developer;
 
@@ -18,11 +20,10 @@ class NewsImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      child: Image.network(
-          'https://dfcby4322olzt.cloudfront.net/wp-content/uploads/2020/03/1800x1200_coronavirus_1-336x224.jpg',
-          fit: BoxFit.fitWidth)
-    );
+        width: double.infinity,
+        child: Image.network(
+            'https://dfcby4322olzt.cloudfront.net/wp-content/uploads/2020/03/1800x1200_coronavirus_1-336x224.jpg',
+            fit: BoxFit.fitWidth));
   }
 }
 
@@ -36,10 +37,12 @@ class NewsSubtitle extends StatelessWidget {
       padding: EdgeInsets.all(7.0),
       child: Align(
         alignment: Alignment.centerLeft,
-        child: Text(
-          news.subtitle,
-          style: TextStyle(fontSize: 22.0, color: Colors.white),
-        ),
+        child: Text(news.subtitle,
+            style: TextStyle(
+                fontSize: 16.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
+            textAlign: TextAlign.justify),
       ),
     );
   }
@@ -55,9 +58,27 @@ class NewsAuthor extends StatelessWidget {
       padding: EdgeInsets.all(7.0),
       child: Align(
         alignment: Alignment.centerLeft,
+        child: Text("Avtor:" + news.author,
+            style: TextStyle(fontSize: 12.0, color: Colors.white)),
+      ),
+    );
+  }
+}
+
+class NewsDate extends StatelessWidget {
+  final News news;
+  NewsDate({Key key, this.news}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    DateFormat dateFormat = DateFormat("dd.MM.yyyy HH:mm");
+    return Padding(
+      padding: EdgeInsets.all(7.0),
+      child: Align(
+        alignment: Alignment.centerRight,
         child: Text(
-          "Avtor:" + news.subtitle,
-          style: TextStyle(fontSize: 12.0, color: Colors.white),
+          "Datum:" + dateFormat.format(news.date),
+          style: TextStyle(fontSize: 12.0, color: Colors.white)
         ),
       ),
     );
@@ -77,7 +98,7 @@ class NewsContent extends StatelessWidget {
         child: Text(
           news.content,
           style: TextStyle(color: Colors.white),
-          textAlign: TextAlign.left,
+          textAlign: TextAlign.justify,
         ),
       ),
     );
@@ -107,10 +128,10 @@ class NewsShare extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           FlatButton.icon(
-              color: Colors.red,
-              icon: Icon(Icons.link), //`Icon` to display
-              label: Text('Vir'), //`Text` to display
-              onPressed: () => loadSourceUrl(news.url),
+            color: Colors.red,
+            icon: Icon(Icons.link), //`Icon` to display
+            label: Text('Vir'), //`Text` to display
+            onPressed: () => loadSourceUrl(news.url),
           ),
           FlatButton.icon(
               color: Colors.orange,
@@ -121,8 +142,7 @@ class NewsShare extends StatelessWidget {
                   final RenderBox box = context.findRenderObject();
                   Share.share(news.url,
                       sharePositionOrigin:
-                      box.localToGlobal(Offset.zero) &
-                      box.size);
+                          box.localToGlobal(Offset.zero) & box.size);
                 }
               }),
           FlatButton.icon(
@@ -170,7 +190,12 @@ class NewsDetailPage extends StatelessWidget {
                   SizedBox(height: 10),
                   NewsSubtitle(news: this.news),
                   SizedBox(height: 10),
-                  NewsAuthor(news: this.news),
+                  Row(
+                    children: <Widget>[
+                      NewsAuthor(news: this.news),
+                      NewsDate(news: this.news),
+                    ],
+                  ),
                   SizedBox(height: 10),
                   NewsContent(news: this.news),
                   NewsShare(news: this.news),
