@@ -10,6 +10,22 @@ import 'package:corona/Screens/News/NewsListPage.dart';
 
 
 
+class Choice {
+  const Choice({this.title, this.icon});
+
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'Car', icon: Icons.directions_car),
+  const Choice(title: 'Bicycle', icon: Icons.directions_bike),
+  const Choice(title: 'Boat', icon: Icons.directions_boat),
+  const Choice(title: 'Bus', icon: Icons.directions_bus),
+  const Choice(title: 'Train', icon: Icons.directions_railway),
+  const Choice(title: 'Walk', icon: Icons.directions_walk),
+];
+
 class Home extends StatelessWidget {
 
   @override
@@ -27,6 +43,37 @@ class Home extends StatelessWidget {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
+
+
+              actions: <Widget>[
+                // action button
+                IconButton(
+                  icon: Icon(Icons.link),
+                  onPressed: () {
+
+                  },
+                ),
+                // action button
+                IconButton(
+                  icon: Icon(Icons.call),
+                  onPressed: () {
+
+                  },
+                ),
+                // overflow menu
+                PopupMenuButton<Choice>(
+                  //onSelected: _select,
+                  itemBuilder: (BuildContext context) {
+                    return choices.skip(2).map((Choice choice) {
+                      return PopupMenuItem<Choice>(
+                        value: choice,
+                        child: Text(choice.title),
+                      );
+                    }).toList();
+                  },
+                ),
+              ],
+
               bottom: TabBar(
                 tabs: [
                   Tab(text: 'Mapa'),
