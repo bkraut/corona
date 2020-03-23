@@ -16,11 +16,7 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'Boat', icon: Icons.directions_boat),
-  const Choice(title: 'Bus', icon: Icons.directions_bus),
-  const Choice(title: 'Train', icon: Icons.directions_railway),
-  const Choice(title: 'Walk', icon: Icons.directions_walk),
-  const Choice(title: 'About', icon: Icons.account_box),
+  const Choice(title: 'Nastavitve', icon: Icons.settings_input_antenna),
 ];
 
 class Home extends StatelessWidget {

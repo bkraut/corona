@@ -1,10 +1,14 @@
+import 'package:corona/Model/UserLocation.dart';
+import 'package:corona/Screens/Location/Services/LocationService.dart';
 import 'package:corona/Screens/Location/Widgets/Main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:location/location.dart';
+import 'package:provider/provider.dart';
 
-import 'Map/CurrentLocationMap.dart';
+import 'package:corona/Screens/Location/Widgets/CurrentLocationMap.dart';
+import 'package:corona/Screens/Location/Widgets/LocationView.dart';
 
 class SwitchWidget extends StatefulWidget {
   @override
@@ -67,20 +71,24 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.transparent,
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: ListView(
-          children: <Widget>[
-            SizedBox(height: 350, child: CurrentLocationMap()),
-            SwitchWidget(),
-            MyHomePage(title: "Location")
-          ],
+    return StreamProvider<UserLocation>(
+      builder: (context) => LocationService().locationController,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.transparent,
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: ListView(
+            children: <Widget>[
+              SizedBox(height: 350, child: CurrentLocationMap()),
+              SwitchWidget(),
+              LocationView(),
+              //MyHomePage(title: "Location")
+            ],
+          ),
         ),
       ),
     );
