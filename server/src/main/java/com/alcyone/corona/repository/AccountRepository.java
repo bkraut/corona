@@ -9,7 +9,7 @@ import com.alcyone.corona.model.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, String> {
 	
-	@Query("SELECT u FROM Account u WHERE u.deviceId = ?1")
-	public Account findByDeviceId(String deviceId);
+	@Query("SELECT u FROM Account u WHERE u.username = ?1")
+	public Account findByUsername(String username);
 	
 }

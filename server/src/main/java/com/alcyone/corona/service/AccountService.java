@@ -1,8 +1,10 @@
 package com.alcyone.corona.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.alcyone.corona.model.Account;
@@ -13,6 +15,9 @@ public class AccountService {
 
 	@Autowired
 	private AccountRepository repository;
+	
+	@Autowired
+	private PasswordEncoder bcryptEncoder;
 
 	public List<Account> getAll() {
 		return repository.findAll();
@@ -22,20 +27,26 @@ public class AccountService {
 		return repository.getOne(uuid);
 	}
 	
-	public Account getAccountByDeviceId(String deviceId) {
-		return repository.findByDeviceId(deviceId);
+	public Account getAccountByUsername(String username) {
+		return repository.findByUsername(username);
 	}
 
-	public Account save(Account account) {
+	public Account register(Account account) {
+		account.setUpdateDate(new Date());
+		account.setCreationDate(new Date());
+		account.setPassword(bcryptEncoder.encode(account.getPassword()));
 		return repository.save(account);
+	}
+	
+	public Account update(Account account) {
+		Account old = repository.findByUsername(account.getUsername());
+		account.setUpdateDate(new Date());
+		account.setPassword(old.getPassword());
+		return account;
 	}
 
 	public void delete(Account account) {
 		repository.delete(account);
-	}
-	
-	public void delete(String uuid) {
-		repository.deleteById(uuid);
 	}
 	
 }
