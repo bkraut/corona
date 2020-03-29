@@ -17,17 +17,5 @@ public class AccountStatusService {
 	public List<AccountStatus> getAll() {
 		return repository.findAll();
 	}
-
-	public AccountStatus save(AccountStatus status) {
-		return repository.save(status);
-	}
-
-	public void delete(AccountStatus status) {
-		repository.delete(status);
-	}
-	
-	public void delete(String uuid) {
-		repository.deleteById(uuid);
-	}
 	
 }

@@ -34,7 +34,7 @@ public class Account {
 	
 	@NonNull
 	@Column(name = "birth_year", length=11, nullable=false)
-	private Integer birthYear; 
+	private Integer birthYear;
 	
 	@NonNull
 	@ManyToOne

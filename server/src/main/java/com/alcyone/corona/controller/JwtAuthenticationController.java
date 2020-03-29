@@ -20,6 +20,7 @@ import com.alcyone.corona.service.JwtUserDetailsService;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/api")
 public class JwtAuthenticationController {
 
 	@Autowired

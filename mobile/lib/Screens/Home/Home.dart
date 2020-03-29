@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: DefaultTabController(
-          length: 4,
+          length: 3,
           child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
@@ -69,19 +69,17 @@ class Home extends StatelessWidget {
               ],
               bottom: TabBar(
                 tabs: [
-                  Tab(text: 'Mapa'),
                   Tab(text: 'Okužbe'),
                   Tab(text: 'Statistika'),
                   Tab(text: 'Novice'),
                 ],
               ),
-              title: Text('Corona Alert'),
+              title: Text('Pandemic'),
               backgroundColor: Color.fromRGBO(80, 80, 80, 0.8),
             ),
             body: TabBarView(
               children: [
                 Main(),
-                Text("Test"),
                 Stat(),
                 NewsListPage(),
               ],
