@@ -1,4 +1,4 @@
-package com.example.tp
+package com.alcyone.corona
 
 import android.os.Bundle
 

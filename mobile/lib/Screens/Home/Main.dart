@@ -79,17 +79,7 @@ class Main extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color: Colors.transparent,
         ),
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child: ListView(
-            children: <Widget>[
-              SizedBox(height: 350, child: CurrentLocationMap()),
-              SwitchWidget(),
-              LocationView(),
-              //MyHomePage(title: "Location")
-            ],
-          ),
-        ),
+        child: CurrentLocationMap()
       ),
     );
   }

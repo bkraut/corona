@@ -1,7 +1,7 @@
 package com.alcyone.corona.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
+	
+	@Value("${jwt.secret}")
+	private String secret;
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -57,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			// dont authenticate this particular request
 			.authorizeRequests()
 				.antMatchers("/api/account/register").permitAll()
-				.antMatchers("/api/authenticate").permitAll()
+				.antMatchers("/api/account/authenticate").permitAll()
 				.antMatchers("/api/sets/**").permitAll()
 				.antMatchers("/api/news").permitAll()
 				.antMatchers("/ping").permitAll().
@@ -70,5 +73,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Add a filter to validate the tokens with every request
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+	}
+
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
 	}
 }

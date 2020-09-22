@@ -21,8 +21,6 @@ import org.springframework.lang.NonNull;
 
 import com.alcyone.corona.model.util.JsonAccountStatusDeserializer;
 import com.alcyone.corona.model.util.JsonAccountStatusSerializer;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -42,23 +40,17 @@ public class Account {
 	@Column(name = "username", length=20, nullable=false)
 	private String username;
 	
-	@Column
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private String password;
-	
 	@NonNull
 	@NotNull(message = "Letnica rojstva je obvezna")
 	@Column(name = "birth_year", length=11, nullable=false)
 	private Integer birthYear;
 	
-	@NonNull
 	@ManyToOne
-	@NotNull(message = "Status je obvezen")
-    @JoinColumn(name="status_id", nullable=false)
+	@JoinColumn(name="status_id", nullable=false)
     private AccountStatus status;
 	
 	@OneToMany(mappedBy="account")
-    private List<AccountTrack> tracks;
+    private List<AccountLocation> tracks;
 	
 	@Column(name = "update_date", nullable=false)
 	private Date updateDate;
@@ -96,10 +88,10 @@ public class Account {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	public List<AccountTrack> getTracks() {
+	public List<AccountLocation> getTracks() {
 		return tracks;
 	}
-	public void setTracks(List<AccountTrack> tracks) {
+	public void setTracks(List<AccountLocation> tracks) {
 		this.tracks = tracks;
 	}
 	@JsonSerialize(using = JsonAccountStatusSerializer.class)
@@ -109,12 +101,6 @@ public class Account {
 	@JsonDeserialize(using = JsonAccountStatusDeserializer.class) 
 	public void setStatus(AccountStatus status) {
 		this.status = status;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	
 }

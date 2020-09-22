@@ -12,7 +12,7 @@ class CurrentLocationMap extends StatelessWidget {
     var userLocation = Provider.of<UserLocation>(context);
     return new FlutterMap(
       options: new MapOptions(
-        center: new LatLng(userLocation.latitude, userLocation.longitude),
+        center: new LatLng(userLocation?.latitude, userLocation?.longitude),
         zoom: 13.0,
       ),
       layers: [
@@ -25,10 +25,12 @@ class CurrentLocationMap extends StatelessWidget {
             new Marker(
               width: 80.0,
               height: 80.0,
-              point: new LatLng(userLocation.latitude, userLocation.longitude),
+              point: new LatLng(userLocation?.latitude, userLocation?.longitude),
               builder: (ctx) =>
               new Container(
-                child: Icon(Icons.gps_fixed),
+                child: Icon(
+                  Icons.location_on, color: Color.fromRGBO(20, 20, 40, 0.8),
+                  size: 40,),
               ),
             ),
           ],

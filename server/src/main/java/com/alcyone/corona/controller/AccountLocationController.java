@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alcyone.corona.model.AccountTrack;
-import com.alcyone.corona.service.AccountTrackService;
+import com.alcyone.corona.model.AccountLocation;
+import com.alcyone.corona.service.AccountLocationService;
 
 @RestController
-@RequestMapping("/api/account/{accountId}/track")
+@RequestMapping("/api/account/location")
 //@CrossOrigin(origins = "http://localhost:3000")
-class AccountTrackController {
+class AccountLocationController {
 
 	@Autowired
-	private AccountTrackService service;
+	private AccountLocationService service;
 	
 	@GetMapping
-	public List<AccountTrack> getAllAccountTracks(String accountId) {
+	public List<AccountLocation> getAllAccountLocations(String accountId) {
 		return service.getAll(accountId);
 	}
 	
 	@PostMapping
-	public void save(@RequestBody AccountTrack track) {
+	public void save(@RequestBody AccountLocation location) {
 		System.out.println("Location received.");
-		//service.save(track);
+		service.save(location);
 	}
 	
 }

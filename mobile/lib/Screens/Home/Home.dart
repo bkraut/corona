@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage('Assets/image2.png'),
+        image: AssetImage('Assets/background.png'),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
